@@ -1,0 +1,32 @@
+apiVersion: redis.redis.opstreelabs.in/v1beta2
+kind: Redis
+metadata:
+  name: redis-ha
+  namespace: redis
+spec:
+  kubernetesConfig:
+    image: quay.io/opstree/redis:7.0.12
+    imagePullPolicy: IfNotPresent
+
+  redisLeader:
+    replicas: 1
+    persistence:
+      enabled: true
+      volumeSize: 1Gi
+
+  redisFollower:
+    replicas: 2
+    persistence:
+      enabled: true
+      volumeSize: 1Gi
+
+  redisSentinel:
+    replicas: 3
+
+  storage:
+    volumeClaimTemplate:
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 1Gi
