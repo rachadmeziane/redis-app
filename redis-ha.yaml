@@ -4,8 +4,6 @@ metadata:
   name: redis-ha
   namespace: redis
 spec:
-    imagePullPolicy: IfNotPresent
-
   redisLeader:
     replicas: 1
     persistence:
