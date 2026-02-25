@@ -4,8 +4,6 @@ metadata:
   name: redis-ha
   namespace: redis
 spec:
-  kubernetesConfig:
-    image: quay.io/opstree/redis:7.0.12
     imagePullPolicy: IfNotPresent
 
   redisLeader:
