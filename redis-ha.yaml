@@ -4,6 +4,10 @@ metadata:
   name: redis-ha
   namespace: redis
 spec:
+  kubernetesConfig:
+    image: redis:7.0
+    imagePullPolicy: IfNotPresent
+
   redisLeader:
     replicas: 1
     persistence:
